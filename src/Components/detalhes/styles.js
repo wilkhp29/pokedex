@@ -1,0 +1,39 @@
+import styled from 'styled-components';
+
+export const Container = styled.div`
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  div{
+      background:#fff;
+      border-radius:10px;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      table{
+          width:100%;
+          td{
+              text-align:center;
+          }
+      }
+      h2,h3{
+          text-align:center;
+      };
+      div{
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+      }
+      button{
+          padding:10px;
+          width:100%;
+          margin-top:10px;
+          align-items:center;
+          border-radius:5px;
+          background:#fc6963;
+          color:#fff;
+          border:0;
+      }
+  }
+`;

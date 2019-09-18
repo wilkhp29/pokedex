@@ -1,7 +1,7 @@
 import React,{ useEffect,useState } from 'react';
 import {useDispatch,useSelector} from "react-redux";
 import { Container, Form , PokemonConteiner,Row } from './styles';
-
+import Detalhe from "../../Components/detalhes";
 const Busca = ({history}) => {
     const dispatch = useDispatch();
     const busca = useSelector((state) => state.pokemon.busca);
@@ -15,35 +15,8 @@ const Busca = ({history}) => {
   };
 
   function rende() {
-    const rende = pokemon.id ?  (
-   <>
-   <Row>
-      <img src={pokemon.sprites.front_default}  />
-      <div>
-        <text>Nome:{pokemon.name}</text>
-        <text>Altura:{pokemon.height}</text>
-        <text>Peso:{pokemon.weight}</text>
-      </div>
-     <div>
-       <text>Hp:{pokemon.stats[5].base_stat}</text>
-       <text>Ataque:{pokemon.stats[4].base_stat}</text>
-       <text>Defesa:{pokemon.stats[3].base_stat}</text>
-     </div>
- <div>
-   <text>Velocidade:{pokemon.stats[0].base_stat}</text>
-   <text>Tipos:{pokemon.types.map(item => (item.type.name+","))}</text>
- </div>
-</Row>
-<Row>
-      <div>
-        <h3>Habilidade</h3>
-          <ul>
-            {pokemon.abilities.map((item,index) => (<li key={index}>{item.ability.name}</li>))}
-          </ul>
-      </div>
-
-</Row>
-</>
+    const rende = pokemon.id ?  (  
+      <Detalhe pokemon={pokemon}/>
     ) :  (<div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center'}}><h2>Pokemon Não Encontrado.</h2></div>); 
     return rende;
   }
