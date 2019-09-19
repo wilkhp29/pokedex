@@ -10,11 +10,22 @@ export default function Detalhes({pokemon,history}) {
   const dispatch = useDispatch();
   const [img,setImg] = useState(pokemon.sprites.front_default)
   const [evolution,setEvolution] = useState([]);
+  const [habilidades,setHabilidades] = useState([]);
   const dados = useSelector((state) => state.pokedex.filter((item) => item.id === pokemon.id));
 
   useEffect(() => {
      async function getEvolutions(){
       const {data:pokemonSpecies} = await api.get(`pokemon-species/${pokemon.name}`);
+      const habilidades  = pokemon.abilities.map(async habilidade => { 
+         const  {data:hb} = await chamada.get(habilidade.ability.url)
+        return hb;
+        });
+
+        const hb = await Promise.all(habilidades);
+        
+        setHabilidades(hb);
+      
+        
       if(pokemonSpecies){
       const {data:pokemonEvolution} = await chamada.get(`${pokemonSpecies.evolution_chain.url}`);
     
@@ -59,7 +70,7 @@ export default function Detalhes({pokemon,history}) {
     dispatch({type:'DELETE_POKEDEX',pokemon});
   }
 
-  
+  console.log(habilidades);
   return (
     <>
     <Container >
@@ -107,7 +118,7 @@ export default function Detalhes({pokemon,history}) {
         <tr>
           <th>Habilidades</th>
         </tr>
-        {pokemon.abilities.map((habilidade,index) => <tr key={index}><td>{habilidade.ability.name}</td></tr>)}
+        {habilidades.map((habilidade,index) => <tr key={index}><td onClick={() => alert(habilidade.effect_entries[0].short_effect)}>{habilidade.name}</td></tr>)}
       </table>
       <button onClick={() =>handlerCapturar()}>
         {dados[0]? "Atualizar foto":"Adicionar ao meu pokédex"}
