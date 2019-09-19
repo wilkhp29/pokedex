@@ -21,8 +21,9 @@ export default function List({match, history }) {
             return response.data;
           });
              
-          Promise.all(list).then(data=>  setPokemons(data));
-          setLoading(false);
+           const dados = await Promise.all(list);
+           setPokemons(dados);
+           setLoading(false);
            }
            
         
