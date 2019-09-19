@@ -36,4 +36,135 @@ export const Container = styled.div`
           border:0;
       }
   }
+ 
+.electric{
+    background:#eed535;
+    color:#212121 !important;
+    padding:5px;
+    border-radius:5px;
+      margin-right:10px;
+}
+.fire{
+    background:#fd7d24;
+    color:#fff !important;
+    padding:5px;
+    border-radius:5px;
+      margin-right:10px;
+}
+
+.water{
+    background:#4592c4;
+    color:#fff !important;
+    padding:5px;
+    border-radius:5px;
+      margin-right:10px;
+}
+
+
+.bug{
+    background:#729f3f;
+    color:#fff !important;
+    padding:5px;
+    border-radius:5px;
+      margin-right:10px;
+}
+.flying{
+    background:#dfe4ea;
+    color:#000 !important;
+    padding:5px;
+    border-radius:5px;
+      margin-right:10px;
+}
+
+.poison{
+    background:#b97fc9;
+    color:#fff !important;
+    padding:5px;
+    border-radius:5px;
+      margin-right:10px;
+}
+.normal{
+    background:#a4acaf;
+    color:#212121 !important;
+    padding:5px;
+    border-radius:5px;
+      margin-right:10px;
+}
+.fairy{
+    background:#fdb9e9;
+    color:#212121 !important;
+    padding:5px;
+    border-radius:5px;
+      margin-right:10px;
+}
+.glass{
+    background:#9bcc50;
+    color:#212121 !important;
+    padding:5px;
+    border-radius:5px;
+      margin-right:10px;
+}
+.ground{
+    background: linear-gradient(180deg, #f7de3f 50%, #ab9842 50%);
+    background-color: #f7de3f;
+    color: #212121 !important;
+    padding:5px;
+    border-radius:5px;
+      margin-right:10px;
+}
+
+.fighting{
+    background:#d56723;
+    color:#fff !important;
+    padding:5px;
+    border-radius:5px;
+      margin-right:10px;
+}
+
+.rock{
+    background:#a38c21;
+    color:#fff !important;
+    padding:5px;
+    border-radius:5px;
+      margin-right:10px;
+}
+
+.psychic{
+    background:#f366b9;
+    color:#fff !important;
+    padding:5px;
+    border-radius:5px;
+      margin-right:10px;
+}
+.ice{
+    background:#51c4e7;
+    color:#212121 !important;
+    padding:5px;
+    border-radius:5px;
+      margin-right:10px;
+}
+.ghost{
+    background:#7b62a3;
+    color:#fff !important;
+    padding:5px;
+    border-radius:5px;
+      margin-right:10px;
+}
+
+.dragon{
+    background: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
+    background-color: #53a4cf;
+    color: #fff !important;
+    padding:5px;
+    border-radius:5px;
+    margin-right:10px;
+}
+
+.steel{
+    background-color: #9eb7b8;
+    color: #212121 !important;
+    padding:5px;
+    border-radius:5px;
+    margin-right:10px;
+}
 `;

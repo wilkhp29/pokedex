@@ -69,7 +69,9 @@ export default function Detalhes({pokemon,history}) {
     <div>
         <input type="file" name="file" onChange={onChangeHandler}/>
         <img src={img} width={200}/>
-            {pokemon.types.map((tipos,index) => <Link key={index} to={`/lista/${tipos.type.name}`}>{tipos.type.name}</Link>)}
+           <div style={{display:"flex",flexDirection:'row',justifyContent:'space-between'}}>
+             {pokemon.types.map((tipos,index) => <Link key={index} className={tipos.type.name} to={`/lista/${tipos.type.name}`}>{tipos.type.name}</Link>)}
+           </div> 
     </div>
     <table>
         <tr>

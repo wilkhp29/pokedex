@@ -14,4 +14,11 @@ export const Container = styled.div`
     span{
         
     }
+    button{
+        padding:10px;
+        border:0;
+        border-radius:5px;
+        background:#fff;
+        color: #fc6963;
+    }
 `;

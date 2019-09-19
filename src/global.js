@@ -6,6 +6,11 @@ export default createGlobalStyle`
   padding: 0;
   margin: 0;
   outline: 0;
+  text-decoration:none;
+  
+}
+a:visited{
+  color:#fff;
 }
 body, html {
   background: #eee;
