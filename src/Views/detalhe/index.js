@@ -13,7 +13,7 @@ export default function Detalhe({history}) {
   </button>
 </div>
     <Container >
-      <div>
+      <div className="container">
       <Detalhes history={history} pokemon={pokemon} />
       </div>
     </Container>

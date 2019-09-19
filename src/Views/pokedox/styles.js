@@ -61,4 +61,5 @@ export const ButtonFloat = styled.button`
     bottom:10px;
     background:#fc6963;
     color:#fff;
+    box-shadow: 0 1px 5px 0 rgba(192, 208, 230, 0.9);
 `;

@@ -28,6 +28,7 @@ export const Container = styled.div`
           flex-direction:column;
           justify-content:center !important;
           align-items:center;
+          width:100%;
       }
       button{
           padding:10px;
