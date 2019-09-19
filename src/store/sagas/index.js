@@ -4,7 +4,7 @@ import api from "../../services/api";
 function* asyncGetPokemon({busca}){    
     try {
         yield put({type:'BUSCANDO'});
-        const {data:pokemon} = yield call(api.get,`pokemon/${busca}`);
+        const {data:pokemon} = yield call(api.get,`pokemon/${busca.toLowerCase()}`);
       
         yield put({type:'ADD_BUSCA',pokemon});
         

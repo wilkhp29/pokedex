@@ -4,12 +4,16 @@ export const Container = styled.div`
   display:flex;
   justify-content:center;
   align-items:center;
+  box-shadow: 0 1px 5px 0 rgba(192, 208, 230, 0.9);
+  background:#fff;
+  border-radius:10px;
   div{
       background:#fff;
       border-radius:10px;
       align-items:center;
       justify-content:center;
       padding:20px;
+      width:100%;
       table{
           width:100%;
           td{
@@ -22,7 +26,7 @@ export const Container = styled.div`
       div{
           display:flex;
           flex-direction:column;
-          justify-content:center;
+          justify-content:center !important;
           align-items:center;
       }
       button{
