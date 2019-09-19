@@ -6,6 +6,7 @@ import { Container,Form,ButtonFloat } from './styles';
 const Pokedex = ({history}) => {
     const pokemons = useSelector((state) => state.pokedex);
     const [filtro,setFiltro] = useState("");
+  
     
   return (
     <>

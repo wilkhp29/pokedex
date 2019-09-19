@@ -1,25 +1,21 @@
 import React,{useEffect,useState} from 'react';
 import { Link } from "react-router-dom";
 import { Container } from './styles';
-
-export default function Header({nome}) {
+import { logout } from "../../services/auth";
+export default function Header({location}) {
     
    function handlerExit() {
-       alert("sair")
-       
+      logout();
+      window.location.href  = "/";
    }
 
   return (
-    <Container nome={nome}>
+    <Container >
         <a href="/app">
         <h1>Pokédex</h1>
         </a>
-        {nome && (
-        <div>
-            <span>{{ nome }}</span>
+       
             <button onClick={() => handlerExit()}>Sair</button>
-        </div>)
-        }
     </Container>
   );
 }
