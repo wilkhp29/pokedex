@@ -66,7 +66,7 @@ export default function Detalhes({pokemon,history}) {
     <Container >
       <div>
     <h3>Nome: {pokemon.name} Nº{pokemon.id}</h3>
-    <h4>Peso: {pokemon.weight} Tamanho: {pokemon.height}</h4>
+    <h4>Peso: {pokemon.weight/10}kg Tamanho: {pokemon.height/10}m</h4>
     <div>
         <input type="file" name="file" onChange={onChangeHandler}/>
         <img src={img} width={200}/>
