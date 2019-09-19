@@ -58,8 +58,7 @@ export default function Detalhes({pokemon,history}) {
   function handlerDelete(){
     dispatch({type:'DELETE_POKEDEX',pokemon});
   }
-  
-  console.log(dados[0]);
+
   
   return (
     <>

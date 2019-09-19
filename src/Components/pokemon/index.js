@@ -13,27 +13,13 @@ export default function Pokemon({pokemon,history}) {
  
   return (
       <Container onClick={() => setPokemon()}>
-    <ul className="results"><li className="animating">
-    <figure>
-    
-            <img src={pokemon.sprites.front_default} width={96} height={96} />
-    
-    </figure>
-    
-    <div className="pokemon-info">
-        <p className="id">
-            <span className="number-prefix">Nº</span>{pokemon.id}
-        </p>
-        <h5>{pokemon.name}</h5>
-        {pokemon.types.map((tipo) =>(
-  <div className="abilities">
-  <span className={`pill background-color-${tipo.type.name}`} >{tipo.type.name.toUpperCase()}</span>
-</div>
-        ))}
-          
-    </div>
-    </li>
-    </ul>
+        <header>
+            <span>{pokemon.id} - {pokemon.name}</span>
+            <img src={`https://www.serebii.net/pokedex-sm/icon/${pokemon.id < 100 ? pokemon.id < 10 ? '00' + pokemon.id : '0' + pokemon.id : pokemon.id }.png`} />
+        </header>
+        <div>
+            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`} />
+        </div>
     </Container>
   );
 }
