@@ -10,33 +10,40 @@ export default function Detalhes({pokemon,history}) {
   const dispatch = useDispatch();
   const [img,setImg] = useState(pokemon.sprites.front_default)
   const [evolution,setEvolution] = useState([]);
-  const dados = useSelector((state) => state.pokedex.filter((item) => {
-    console.log(item);
-    
-    return item.id === pokemon.id}));
+  const dados = useSelector((state) => state.pokedex.filter((item) => item.id === pokemon.id));
 
   useEffect(() => {
      async function getEvolutions(){
       const {data:pokemonSpecies} = await api.get(`pokemon-species/${pokemon.name}`);
+      if(pokemonSpecies){
       const {data:pokemonEvolution} = await chamada.get(`${pokemonSpecies.evolution_chain.url}`);
     
-      
-      const {data:babyPokemon} = await api.get(`pokemon/${pokemonEvolution.chain.species.name}`);
-      const {data:teenPokemon} = await api.get(`pokemon/${pokemonEvolution.chain.evolves_to[0].species.name}`);
-      const {data:oldPokemon} = await api.get(`pokemon/${pokemonEvolution.chain.evolves_to[0].evolves_to[0].species.name}`);
-      
-     const pokemons = [babyPokemon,teenPokemon,oldPokemon]
-
-      setEvolution(pokemons);
-
-      
+        if(pokemonEvolution){
+          const pokemons = [];
+      try {
+        const {data:babyPokemon} = await api.get(`pokemon/${pokemonEvolution.chain.species.name}`);
+        pokemons.push(babyPokemon);
+        const {data:teenPokemon} = await api.get(`pokemon/${pokemonEvolution.chain.evolves_to[0].species.name}`);
+        pokemons.push(teenPokemon);
+        const {data:oldPokemon} = await api.get(`pokemon/${pokemonEvolution.chain.evolves_to[0].evolves_to[0].species.name}`);
+        pokemons.push(oldPokemon);
+      } catch (error) {
+          console.error(error);
+      }finally{
+        setEvolution(pokemons);
+      }
+        }
+      }
     }
     
 
     getEvolutions()
   },[])
 
-
+  useEffect(() => {
+      dados[0]?setImg(dados[0].sprites.front_default):setImg(pokemon.sprites.front_default);
+      
+  },[pokemon.id])
 
   function onChangeHandler(event){
    pokemon.sprites.front_default =  URL.createObjectURL(event.target.files[0]);
@@ -44,22 +51,26 @@ export default function Detalhes({pokemon,history}) {
   }
 
   function handlerCapturar(){
-    dispatch({type:'ADD_POKEDEX',payload:pokemon});
+    pokemon.sprites.front_default = img;
+    dispatch({type:'ADD_POKEDEX',pokemon});
   }
 
-  console.log(dados);
+  function handlerDelete(){
+    dispatch({type:'DELETE_POKEDEX',pokemon});
+  }
   
-
+  console.log(dados[0]);
+  
   return (
     <>
     <Container >
       <div>
-    <h2>Nome: {pokemon.name} Nº{pokemon.id}</h2>
-    <h3>Weight: {pokemon.weight} Height: {pokemon.height}</h3>
+    <h3>Nome: {pokemon.name} Nº{pokemon.id}</h3>
+    <h4>Peso: {pokemon.weight} Tamanho: {pokemon.height}</h4>
     <div>
         <input type="file" name="file" onChange={onChangeHandler}/>
         <img src={img} width={200}/>
-            {pokemon.types.map((tipos,index) => <Link to={`/lista/${tipos.type.name}`}>{tipos.type.name}</Link>)}
+            {pokemon.types.map((tipos,index) => <Link key={index} to={`/lista/${tipos.type.name}`}>{tipos.type.name}</Link>)}
     </div>
     <table>
         <tr>
@@ -71,11 +82,11 @@ export default function Detalhes({pokemon,history}) {
           <td>{pokemon.stats[5].base_stat}</td>
         </tr>
         <tr>
-          <td>Attack:</td>
+          <td>Ataque:</td>
           <td>{pokemon.stats[4].base_stat}</td>
         </tr>
         <tr>
-          <td>Defense:</td>
+          <td>Defesa:</td>
           <td>{pokemon.stats[3].base_stat}</td>
         </tr>
         <tr>
@@ -87,7 +98,7 @@ export default function Detalhes({pokemon,history}) {
           <td>{pokemon.stats[1].base_stat}</td>
         </tr>
         <tr>
-          <td>Speed:</td>
+          <td>Velocidade:</td>
           <td>{pokemon.stats[0].base_stat}</td>
         </tr>
       </table>
@@ -98,8 +109,14 @@ export default function Detalhes({pokemon,history}) {
         {pokemon.abilities.map((habilidade,index) => <tr key={index}><td>{habilidade.ability.name}</td></tr>)}
       </table>
       <button onClick={() =>handlerCapturar()}>
-        Adicionar ao Meu Pokédex
+        {dados[0]? "Atualizar foto":"Adicionar ao meu pokédex"}
       </button>
+
+      {dados[0] &&  (
+        <button onClick={() => handlerDelete()}>
+          Remover do meu pokédex
+        </button>
+      )}
       </div>
     </Container>
 

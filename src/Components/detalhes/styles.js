@@ -16,7 +16,7 @@ export const Container = styled.div`
               text-align:center;
           }
       }
-      h2,h3{
+      h4,h3{
           text-align:center;
       };
       div{

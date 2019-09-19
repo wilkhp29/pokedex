@@ -1,30 +1,32 @@
-import React,{ useEffect } from 'react';
-import {useDispatch,useSelector} from "react-redux";
+import React,{useState} from 'react';
+import {useSelector} from "react-redux";
+import Pokemon from "../../Components/pokemon";
+import { Container,Form,ButtonFloat } from './styles';
 
-import { Container,Form } from './styles';
-
-const Pokedex = () => {
-    const dispatch = useDispatch();
-    const pokemon = useSelector((state) => {
-      console.log(state.pokedex);
-      return state.pokedex});
+const Pokedex = ({history}) => {
+    const pokemons = useSelector((state) => state.pokedex);
+    const [filtro,setFiltro] = useState("");
     
-  useEffect(() => {
-    
-  });
-
   return (
+    <>
     <Container>
       <Form>
         <input
           type="text"
+          value={filtro}
+          onChange={(e) => setFiltro(e.target.value)}
           placeholder="Filtra Seus Pokemons"
         />
         <button onClick={() =>{}}>
-          Buscar
+          filtra
         </button>
       </Form>
+    <ul>
+       {pokemons.filter(poke => poke.name.includes(filtro)).map((pokemon) => <Pokemon history={history} key={pokemon.id} pokemon={pokemon}/>)}
+    </ul>
     </Container>
+    <ButtonFloat onClick={() => history.push("/busca")}>Buscar</ButtonFloat>
+    </>
   );
 }
 
