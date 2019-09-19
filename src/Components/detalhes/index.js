@@ -118,7 +118,7 @@ export default function Detalhes({pokemon,history}) {
         <tr>
           <th>Habilidades</th>
         </tr>
-        {habilidades.map((habilidade,index) => <tr key={index}><td onClick={() => alert(habilidade.effect_entries[0].short_effect)}>{habilidade.name}</td></tr>)}
+        {habilidades.map((habilidade,index) => <tr style={{background:index/2==0&&'#ecf0f1',cursor:"pointer"}} onClick={() => alert(habilidade.effect_entries[0].short_effect)} key={index}><td style={{padding:10}} >{habilidade.name}</td></tr>)}
       </table>
       <button onClick={() =>handlerCapturar()}>
         {dados[0]? "Atualizar foto":"Adicionar ao meu pokédex"}
