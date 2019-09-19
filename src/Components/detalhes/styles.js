@@ -172,4 +172,12 @@ export const Container = styled.div`
     border-radius:5px;
     margin-right:10px;
 }
+
+.dark{
+    background-color: #707070;
+    color: #fff !important;
+    padding:5px;
+    border-radius:5px;
+    margin-right:10px;
+}
 `;
