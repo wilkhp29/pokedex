@@ -16,6 +16,7 @@ export const Form = styled.form`
   display: flex;
   width:100%;
   flex:1;
+  margin-bottom:20px;
   input {
     flex: 1;
     height: 46px;

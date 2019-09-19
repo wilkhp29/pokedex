@@ -1,11 +1,13 @@
 import React,{ useEffect } from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch,useSelector} from "react-redux";
 
 import { Container,Form } from './styles';
 
 const Pokedex = () => {
     const dispatch = useDispatch();
-
+    const pokemon = useSelector((state) => {
+      console.log(state.pokedex);
+      return state.pokedex});
     
   useEffect(() => {
     

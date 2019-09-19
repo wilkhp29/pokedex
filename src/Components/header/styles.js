@@ -7,7 +7,7 @@ export const Container = styled.div`
     height:64px;
     width:100%;
     background-color:#fc6963;
-    justify-content:${props => props.nome ? 'space-between':'center'};
+    justify-content:space-between;
     align-items:center;
     color:#fff;
     padding:10px;

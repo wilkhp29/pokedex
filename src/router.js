@@ -10,6 +10,7 @@ import Pokedex from "./Views/pokedox";
 import Busca from "./Views/busca";
 import Login from "./Views/login";
 import Lista from "./Views/list";
+import Detalhes from "./Views/detalhe";
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -35,7 +36,8 @@ const Routes = () => (
       <Route exact path="/" component={Login} />
       <PrivateRoute path="/app" component={Pokedex} />
       <PrivateRoute path="/busca" component={Busca} />
-      <PrivateRoute path="/list/:name" component={Lista} />
+      <PrivateRoute path="/lista/:name" component={Lista} />
+      <PrivateRoute path="/detalhes" component={Detalhes} />
       <Route path="*" component={() => <h1>Page not found</h1>} />
     </Switch>
   </BrowserRouter>

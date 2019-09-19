@@ -1,13 +1,42 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {useDispatch,useSelector} from "react-redux";
 import { Link } from "react-router-dom";
-
+import chamada from "axios";
+import api from "../../services/api";
 import { Container } from './styles';
+import PokemonDetail from "../pokemon";
 
-export default function Detalhes({pokemon}) {
+export default function Detalhes({pokemon,history}) {
   const dispatch = useDispatch();
   const [img,setImg] = useState(pokemon.sprites.front_default)
- // const dados = useSelector((state) => state.pokedex.map((item) => item.id == pokemon.id));
+  const [evolution,setEvolution] = useState([]);
+  const dados = useSelector((state) => state.pokedex.filter((item) => {
+    console.log(item);
+    
+    return item.id === pokemon.id}));
+
+  useEffect(() => {
+     async function getEvolutions(){
+      const {data:pokemonSpecies} = await api.get(`pokemon-species/${pokemon.name}`);
+      const {data:pokemonEvolution} = await chamada.get(`${pokemonSpecies.evolution_chain.url}`);
+    
+      
+      const {data:babyPokemon} = await api.get(`pokemon/${pokemonEvolution.chain.species.name}`);
+      const {data:teenPokemon} = await api.get(`pokemon/${pokemonEvolution.chain.evolves_to[0].species.name}`);
+      const {data:oldPokemon} = await api.get(`pokemon/${pokemonEvolution.chain.evolves_to[0].evolves_to[0].species.name}`);
+      
+     const pokemons = [babyPokemon,teenPokemon,oldPokemon]
+
+      setEvolution(pokemons);
+
+      
+    }
+    
+
+    getEvolutions()
+  },[])
+
+
 
   function onChangeHandler(event){
    pokemon.sprites.front_default =  URL.createObjectURL(event.target.files[0]);
@@ -15,10 +44,14 @@ export default function Detalhes({pokemon}) {
   }
 
   function handlerCapturar(){
-    dispatch({type:'ADD_POKEMON',payload:pokemon});
+    dispatch({type:'ADD_POKEDEX',payload:pokemon});
   }
 
+  console.log(dados);
+  
+
   return (
+    <>
     <Container >
       <div>
     <h2>Nome: {pokemon.name} Nº{pokemon.id}</h2>
@@ -26,7 +59,7 @@ export default function Detalhes({pokemon}) {
     <div>
         <input type="file" name="file" onChange={onChangeHandler}/>
         <img src={img} width={200}/>
-            {pokemon.types.map((tipos,index) => <Link to={`/list/${tipos.type.name}`}>{tipos.type.name}</Link>)}
+            {pokemon.types.map((tipos,index) => <Link to={`/lista/${tipos.type.name}`}>{tipos.type.name}</Link>)}
     </div>
     <table>
         <tr>
@@ -65,9 +98,16 @@ export default function Detalhes({pokemon}) {
         {pokemon.abilities.map((habilidade,index) => <tr key={index}><td>{habilidade.ability.name}</td></tr>)}
       </table>
       <button onClick={() =>handlerCapturar()}>
-        Capturar
+        Adicionar ao Meu Pokédex
       </button>
       </div>
     </Container>
+
+    <h4 style={{marginTop:20}}>Evoluções</h4>
+    <ul style={{display:"flex",width:'100%;',justifyContent:"space-between",alignItems:"center",}}>
+
+    {evolution.map(Pokemon => <PokemonDetail history={history}  pokemon={Pokemon}/>)}
+  </ul>
+  </>
   );
 }

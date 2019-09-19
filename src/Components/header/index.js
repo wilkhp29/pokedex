@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-
+import { Link } from "react-router-dom";
 import { Container } from './styles';
 
 export default function Header({nome}) {
@@ -11,7 +11,9 @@ export default function Header({nome}) {
 
   return (
     <Container nome={nome}>
+        <a href="/app">
         <h1>Pokédex</h1>
+        </a>
         {nome && (
         <div>
             <span>{{ nome }}</span>

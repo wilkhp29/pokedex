@@ -1,12 +1,12 @@
-import React,{ useEffect,useState } from 'react';
+import React from 'react';
 import {useDispatch,useSelector} from "react-redux";
-import { Container, Form , PokemonConteiner,Row } from './styles';
-import Detalhe from "../../Components/detalhes";
+import { Container, Form , PokemonConteiner } from './styles';
+import Pokemon from "../../Components/pokemon";
 const Busca = ({history}) => {
     const dispatch = useDispatch();
     const busca = useSelector((state) => state.pokemon.busca);
     const loading = useSelector((state) => state.pokemon.loading);
-    const pokemon = useSelector((state) => state.pokemon.pokemon);
+    const pokemon = useSelector((state) => state.pokemon.pokemonBusca);
     
     
   function buscar(e){
@@ -15,24 +15,19 @@ const Busca = ({history}) => {
   };
 
   function rende() {
-    const rende = pokemon.id ?  (  
-      <Detalhe pokemon={pokemon}/>
+    const render = pokemon.id ?  (  
+      <Pokemon history={history} pokemon={pokemon}/>
     ) :  (<div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center'}}><h2>Pokemon Não Encontrado.</h2></div>); 
-    return rende;
+    return render;
   }
 
-  function _handleKeyDown(e) {
-    e.preventDefault();
-    if (e.key === 'Enter') {
-     buscar(e);
-    }
-  }
+
 
   return (
     <Container>
       <div style={{flex:1,marginBottom:10,width:'100%'}}>
         <button style={{borderRadius:5,marginRight:10,padding:10,background:'#fc6963',color:'#fff'}} onClick={(e) => history.push("/app")}>
-          Meu Pokedéx
+        volta
         </button>
       </div>
       <Form onSubmit={buscar} >
@@ -48,14 +43,14 @@ const Busca = ({history}) => {
         </button>
       </Form>
 
-      <PokemonConteiner>
+    
           {loading ? (
-          <div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center'}}>
+          <div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center',background:"#fff",felx:1}}>
               <h1>Carregando Aguarde ...</h1>
           </div>) : 
           rende()
           }        
-      </PokemonConteiner>
+
     </Container>
   );
 }
