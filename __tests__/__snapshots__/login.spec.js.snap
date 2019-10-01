@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renderizando a Login 1`] = `
+<styled.div>
+  <styled.form
+    onSubmit={[Function]}
+  >
+    <input
+      onChange={[Function]}
+      placeholder="Insira Seu nome"
+      type="text"
+    />
+    <button
+      type="submit"
+    >
+      Entrar
+    </button>
+    <hr />
+  </styled.form>
+</styled.div>
+`;
