@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState,useEffect,useRef} from 'react';
 import {useDispatch,useSelector} from "react-redux";
 import { Link } from "react-router-dom";
 import chamada from "axios";
@@ -12,7 +12,8 @@ export default function Detalhes({pokemon,history}) {
   const [evolution,setEvolution] = useState([]);
   const [habilidades,setHabilidades] = useState([]);
   const dados = useSelector((state) => state.pokedex.filter((item) => item.id === pokemon.id));
-
+  const imgRef = useRef();
+  
   useEffect(() => {
      async function getEvolutions(){
       const {data:pokemonSpecies} = await api.get(`pokemon-species/${pokemon.name}`);
@@ -61,7 +62,9 @@ export default function Detalhes({pokemon,history}) {
    setImg(URL.createObjectURL(event.target.files[0]));
   }
 
+
   function handlerCapturar(){
+    alert("A imagem Selecionada agora está vinculada ao seu pokemon");
     pokemon.sprites.front_default = img;
     dispatch({type:'ADD_POKEDEX',pokemon});
   }
@@ -78,7 +81,14 @@ export default function Detalhes({pokemon,history}) {
     <h3>Nome: {pokemon.name.toUpperCase()} Nº{pokemon.id}</h3>
     <h4>Peso: {pokemon.weight/10}kg Tamanho: {pokemon.height/10}m</h4>
     <div>
-        <input type="file" name="file" onChange={onChangeHandler}/>
+      <div 
+      className="Dropzone"
+      onClick={() =>  imgRef.current.click()}
+      style={{ cursor: "pointer" }}
+      >
+        <input ref={imgRef} type="file"  className="FileInput" name="file" onChange={onChangeHandler}/>
+        <span>Alterar Imagem</span>
+      </div>
         <img src={img} width="200"/>
            <div style={{display:"flex",flexDirection:'row',justifyContent:'space-between'}}>
              {pokemon.types.map((tipos,index) => <Link key={index} className={tipos.type.name} to={`/lista/${tipos.type.name}`}>{tipos.type.name}</Link>)}
@@ -133,7 +143,7 @@ export default function Detalhes({pokemon,history}) {
     </Container>
 
     <h4 style={{marginTop:20}}>Evoluções</h4>
-    <ul style={{display:"flex",width:'100%;',justifyContent:"space-between",alignItems:"center",}}>
+    <ul style={{display:"flex",flexWrap:'wrap',width:'100%;',justifyContent:"space-around",alignItems:"center",}}>
 
     {evolution.map(Pokemon => <PokemonDetail history={history}  pokemon={Pokemon}/>)}
   </ul>

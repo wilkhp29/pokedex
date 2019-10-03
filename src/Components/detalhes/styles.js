@@ -180,4 +180,18 @@ export const Container = styled.div`
     border-radius:5px;
     margin-right:10px;
 }
+.Dropzone {
+  background-color: #fff;
+  border: 2px dashed rgb(187, 186, 186);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 16px;
+  margin-bottom:10px;
+}
+.FileInput {
+  display: none;
+}
 `;
