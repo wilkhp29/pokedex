@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Buscar renderizando a Busca 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Busca>
+    <styled.div>
+      <StyledComponent
+        forwardedComponent={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bdVaJa",
+              "isStatic": true,
+              "lastClassName": "dZlvJv",
+              "rules": Array [
+                "
+  padding:10px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex:1;
+  flex-direction:column;
+",
+              ],
+            },
+            "displayName": "styled.div",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bdVaJa",
+            "target": "div",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        forwardedRef={null}
+      >
+        <div
+          className="sc-bdVaJa dZlvJv"
+        >
+          <div
+            style={
+              Object {
+                "flex": 1,
+                "marginBottom": 10,
+                "width": "100%",
+              }
+            }
+          >
+            <button
+              onClick={[Function]}
+              style={
+                Object {
+                  "background": "#fc6963",
+                  "borderRadius": 5,
+                  "color": "#fff",
+                  "marginRight": 10,
+                  "padding": 10,
+                }
+              }
+            >
+              volta
+            </button>
+          </div>
+          <styled.form
+            onSubmit={[Function]}
+          >
+            <StyledComponent
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-bwzfXH",
+                    "isStatic": true,
+                    "lastClassName": "eTbizR",
+                    "rules": Array [
+                      "
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  width:100%;
+  flex:1;
+  margin-bottom:20px;
+  input {
+    flex: 1;
+    height: 46px;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    color: #777;
+    font-size: 15px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px 0px 0px 5px;
+    &::placeholder {
+      color: #999;
+    }
+  }
+  button {
+    color: #fff;
+    font-size: 16px;
+    background: #fc6963;
+    height: 46px;
+    border: 0;
+    border-radius: 0px 5px 5px 0;
+    padding:10px;
+    line-height:-10px;
+  }
+",
+                    ],
+                  },
+                  "displayName": "styled.form",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-bwzfXH",
+                  "target": "form",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              forwardedRef={null}
+              onSubmit={[Function]}
+            >
+              <form
+                className="sc-bwzfXH eTbizR"
+                onSubmit={[Function]}
+              >
+                <input
+                  onChange={[Function]}
+                  placeholder="Buscar Pokemon por Nome ou Numero"
+                  type="text"
+                  value=""
+                />
+                <button
+                  type="submit"
+                >
+                  Buscar
+                </button>
+              </form>
+            </StyledComponent>
+          </styled.form>
+          <div
+            style={
+              Object {
+                "alignItems": "center",
+                "display": "flex",
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <h2>
+              Pokemon Não Encontrado.
+            </h2>
+          </div>
+        </div>
+      </StyledComponent>
+    </styled.div>
+  </Busca>
+</Provider>
+`;

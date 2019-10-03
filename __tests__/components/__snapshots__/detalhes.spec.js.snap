@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pokedex renderizando  componente detalhes 1`] = `
+<styled.div
+  onClick={[Function]}
+>
+  <header>
+    <span>
+      25
+       - 
+      pikachu
+    </span>
+    <img
+      src="https://www.serebii.net/pokedex-sm/icon/025.png"
+    />
+  </header>
+  <div>
+    <img
+      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+    />
+  </div>
+</styled.div>
+`;

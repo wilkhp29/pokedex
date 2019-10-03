@@ -1,10 +1,4 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import Pokedex from '../src/Views/pokedox';
-
-import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
-
 const mockStore = configureStore();
 
 const pokemon = {
@@ -9709,20 +9703,8 @@ const pokemon = {
     "weight": 60
   }
 
-const initalState = {
-    pokedox:[pokemon,pokemon],
-    pokemon:{busca:'',pokemon:{},loading:false,pokemonBusca:{}}
+export const initalState = {
+    pokedex:[pokemon,pokemon],
+    pokemon: {busca:'',pokemon,loading:false,pokemonBusca:{}}
 }
-
-const store = mockStore(initalState);
-describe('pokedex', () => {
-    it('renderizando a Pokedex', () => {
-        const wrapper = shallow(
-        <Provider store={store}>
-            <Pokedex />
-        </Provider>
-        );
-    
-        expect(wrapper).toMatchSnapshot();
-    });
-})
+export const store = mockStore(initalState); 

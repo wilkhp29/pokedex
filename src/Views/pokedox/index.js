@@ -4,9 +4,9 @@ import Pokemon from "../../Components/pokemon";
 import { Container,Form,ButtonFloat } from './styles';
 
 const Pokedex = ({history}) => {
-    const pokemons = useSelector((state) => state.pokedex);
+    const pokemons = useSelector(({pokedex}) => pokedex);
     const [filtro,setFiltro] = useState("");
-  
+    
     
   return (
     <>

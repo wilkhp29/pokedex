@@ -1,18 +1,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Lista from '../src/Views/list';
+import Lista from '../../src/Views/list';
 
 import { Provider } from "react-redux";
-import configureStore from "redux-mock-store";
+import {store} from "../mock";
 
-const mockStore = configureStore();
 
-const initalState = {
-    pokedox:[],
-    pokemon:{busca:'',pokemon:{},loading:false,pokemonBusca:{}}
-}
-
-const store = mockStore(initalState);
 
 describe('lista', () => {
     it('renderizando a Lista', () => {

@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import Detalhes from "../../Components/detalhes";
 
 export default function Detalhe({history}) {
-  const pokemon = useSelector((state) => state.pokemon.pokemon);
+  const pokemon = useSelector(({pokemon}) => pokemon.pokemon);
   return (
     <>
     <div style={{flex:1,marginBottom:10,width:'100%'}}>
